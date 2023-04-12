@@ -4,13 +4,18 @@ interface RestClientParams {
 	errorHandler?: (error: any) => any;
 }
 
+interface CustomRequestInit extends RequestInit {
+	baseURL?: string;
+	responseType?: "json" | "stream";
+}
+
 export const createRestClient = ({ baseURL, apiToken, errorHandler }: RestClientParams) => {
 	const customFetch = async (
 		method: string,
 		endpoint: string,
-		{ params, body, ...config } = {} as any
+		{ params, body, baseURL: customBaseURL, responseType, ...config } = {} as any
 	) => {
-		const url = new URL(endpoint, baseURL);
+		const url = new URL(endpoint, customBaseURL || baseURL);
 
 		if (params) {
 			Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
@@ -57,6 +62,11 @@ export const createRestClient = ({ baseURL, apiToken, errorHandler }: RestClient
 				throw error;
 			}
 
+			// Check for responseType and return the response accordingly
+			if (responseType === "stream") {
+				return response.body;
+			}
+
 			return response.json();
 		} catch (error) {
 			if (errorHandler) {
@@ -71,22 +81,22 @@ export const createRestClient = ({ baseURL, apiToken, errorHandler }: RestClient
 		get: async <Response = any, Params = Record<string, string>>(
 			endpoint: string,
 			params?: Params,
-			config?: RequestInit
+			config?: CustomRequestInit
 		) => await customFetch("GET", endpoint, { params, ...config }),
 		post: async <Response = any, Payload = Record<string, any>>(
 			endpoint: string,
 			payload?: Payload,
-			config?: RequestInit
+			config?: CustomRequestInit
 		) => await customFetch("POST", endpoint, { body: payload, ...config }),
 		put: async <Response = any, Payload = Record<string, any>>(
 			endpoint: string,
 			payload?: Payload,
-			config?: RequestInit
+			config?: CustomRequestInit
 		) => await customFetch("PUT", endpoint, { body: payload, ...config }),
 		delete: async <Response = any, Params = Record<string, any>>(
 			endpoint: string,
 			params?: Params,
-			config?: RequestInit
+			config?: CustomRequestInit
 		) => await customFetch("DELETE", endpoint, { params, ...config }),
 	};
 };
