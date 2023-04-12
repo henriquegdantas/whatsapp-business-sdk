@@ -19,7 +19,7 @@ The connector is fully typed, tested and documented!
 
 `npm install whatsapp-business`
 
-`yarn add whatsapp-business`
+`pnpm add whatsapp-business`
 
 ## Documentation
 
@@ -172,7 +172,7 @@ webhookClient.initWebhook({
 This project uses typescript. Resources are stored in 2 key structures:
 
 -   <b>src</b>: the whole connector written in typescript
--   <b>dist</b> the packed bundle of the project for use in nodejs environments (generated when running yarn run build).
+-   <b>dist</b> the packed bundle of the project for use in nodejs environments (generated when running pnpm build).
 -   <b>\_\_tests\_\_</b> all the tests for the connector
 
 ## Contribution and thanks
