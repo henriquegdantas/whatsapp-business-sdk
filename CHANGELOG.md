@@ -1,3 +1,12 @@
+## [1.6.0](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.5.2...v1.6.0) (2023-04-11)
+
+## Features
+
+* ✨ Making it work on edge environments
+* ✨ Replace axios with fetch API
+* ✨ Removed webhook client (because of express)
+
+
 ## [1.5.2](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.5.1...v1.5.2) (2023-03-25)
 
 
