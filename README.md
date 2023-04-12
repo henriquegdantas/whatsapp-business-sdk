@@ -96,6 +96,10 @@ sendPictureMessage(
 
 ## Support
 
+| FORK UPDATES                          |
+| ------------------------------------- |
+| <ul><li>- [ ] Fix tests after changes |
+
 | Cloud API                                     |
 | --------------------------------------------- |
 | <ul><li>- [x] Business profiles endpoints     |
