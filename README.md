@@ -1,13 +1,20 @@
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MarcosNicolau/whatsapp-business-sdk/npm_publish.yml?branch=main)
-![Known Vulnerabilities](https://snyk.io/test/github/MarcosNicolau/whatsapp-business-sdk/badge.svg)
-![Codecov](https://img.shields.io/codecov/c/github/MarcosNicolau/whatsapp-business-sdk?token=G20JHIZMRW)
-![GitHub last commit](https://img.shields.io/github/last-commit/MarcosNicolau/whatsapp-business-sdk)
-![GitHub top language](https://img.shields.io/github/languages/top/MarcosNicolau/whatsapp-business-sdk)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/henriquegdantas/whatsapp-business-sdk/npm_publish.yml?branch=main)
+![Known Vulnerabilities](https://snyk.io/test/github/henriquegdantas/whatsapp-business-sdk/badge.svg)
+![Codecov](https://img.shields.io/codecov/c/github/henriquegdantas/whatsapp-business-sdk?token=G20JHIZMRW)
+![GitHub last commit](https://img.shields.io/github/last-commit/henriquegdantas/whatsapp-business-sdk)
+![GitHub top language](https://img.shields.io/github/languages/top/henriquegdantas/whatsapp-business-sdk)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/whatsapp-business)
-![npm](https://img.shields.io/npm/v/whatsapp-business)
-![GitHub](https://img.shields.io/github/license/MarcosNicolau/whatsapp-business-sdk)
+![npm](https://img.shields.io/github/package-json/v/henriquegdantas/whatsapp-business-sdk)
+![GitHub](https://img.shields.io/github/license/henriquegdantas/whatsapp-business-sdk)
 
 # WhatsApp Business API SDK
+
+> Forked from [whatsapp-business-api](https://github.com/MarcosNicolau/whatsapp-business-sdk)
+
+**Modified according to my needs**
+
+-   Works on edge API (removed express server and replaced `axios` with `Fetch API`)
+-   Replaced `yarn` with `pnpm`
 
 Node.js connector for WhatsApp Business Cloud API, with TypeScript support.
 
@@ -87,60 +94,6 @@ sendPictureMessage(
 );
 ```
 
-### Webhooks
-
-The webhook client will handle the subscription and setup for the webhooks. You must have an HTTPS connection and add the server URL in your application management.
-
-For more info, checks the docs [here](https://developers.facebook.com/docs/whatsapp/business-management-api/guides/set-up-webhooks)
-
-```typescript
-import { WebhookClient, WABAClient } from "./index";
-
-//The token and path must match the values you set on the application management
-const webhookClient = new WebhookClient({
-	token: "YOUR_VALIDATION_TOKEN",
-	path: "/whatsapp/business",
-});
-const wabaClient = new WABAClient({
-	accountId: "ACCOUNT_ID",
-	phoneId: "PHONE_ID",
-	apiToken: "API_TOKEN",
-});
-
-//init webhooks takes an object of functions that will be triggered based on the received webhook event type
-webhookClient.initWebhook({
-	onStartListening: () => {
-		console.log("Server started listening");
-	},
-	onTextMessageReceived: async (payload, contact) => {
-		try {
-			const messageId = payload.id.toString();
-			const contactNumber = contact.wa_id;
-			//Mark message as read
-			await wabaClient.markMessageAsRead(messageId);
-			//React to message
-			await wabaClient.sendMessage({
-				to: contactNumber,
-				type: "reaction",
-				reaction: { message_id: messageId, emoji: "😄" },
-			});
-			//Respond to message
-			await wabaClient.sendMessage({
-				type: "text",
-				to: contactNumber,
-				text: { body: "Ok!" },
-				//This is optional, it enables reply-to feature
-				context: {
-					message_id: messageId,
-				},
-			});
-		} catch (err) {
-			console.log(err);
-		}
-	},
-});
-```
-
 ## Support
 
 | Cloud API                                     |
@@ -180,6 +133,8 @@ This project uses typescript. Resources are stored in 2 key structures:
 Contributions are encouraged, I will review any incoming pull requests.
 
 ### Donations
+
+> Original author's wallets (MarcosNicolau)
 
 If you found this project interesting or useful, you can give this project a star. Thank you!
 
