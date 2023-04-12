@@ -40,8 +40,8 @@ devDependencies:
     specifier: ^2.3.0
     version: 2.3.0
   dotenv:
-    specifier: ^16.0.1
-    version: 16.0.1
+    specifier: ^16.0.3
+    version: 16.0.3
   eslint:
     specifier: ^8.16.0
     version: 8.16.0
@@ -2330,8 +2330,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv@16.0.1:
-    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
+  /dotenv@16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
     dev: true
 
