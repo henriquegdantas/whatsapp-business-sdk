@@ -54,11 +54,11 @@ export type WebhookContactCard = {
  * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#messages-object
  */
 export type WebhookLocation = {
-	address: string;
+	address?: string;
 	latitude: number;
 	longitude: number;
-	name: string;
-	url: string;
+	name?: string;
+	url?: string;
 };
 
 export type WebhookError = {
