@@ -552,29 +552,3 @@ export type Webhook = {
 		}
 	];
 };
-export type WebhookEvents = {
-	/**
-	 * Gets fired when the server starts listening
-	 */
-	onStartListening?: () => void;
-	/**
-	 * This event gets fired on any webhooks messages, you'll have to differentiate between the message type
-	 */
-	onMessageReceived?: (payload: WebhookMessage, contact: WebhookContact) => void;
-	/**
-	 * Gets fired when the received message is type of text
-	 */
-	onTextMessageReceived?: (
-		textMessage: Pick<WebhookMessage, "type" | "timestamp" | "text" | "from" | "id">,
-		contact: WebhookContact
-	) => void;
-	/**
-	 * Gets triggered when a message is sent or delivered to a customer
-	 * or the customer reads the delivered message sent by a business that is subscribed to the Webhooks.
-	 */
-	onStatusReceived?: (payload: WebhookStatus) => void;
-	/**
-	 * Gets fired whenever there is an err
-	 */
-	onError?: (payload: WebhookError) => void;
-};
