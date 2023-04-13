@@ -38,14 +38,14 @@ export type WebhookContactCard = {
 	}[];
 	emails?: {
 		email: string;
-		type: string;
+		type?: string;
 	}[];
 	org?: {
 		company: string;
 	};
 	urls?: {
 		url: string;
-		type: string;
+		type?: string;
 	}[];
 };
 
