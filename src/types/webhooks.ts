@@ -192,7 +192,7 @@ export interface WebhookMessageAudio extends WebhookMessageBase {
 	/**
 	 * When the messages type is set to audio, including voice messages, this object is included in the messages object:
 	 */
-	audio?: {
+	audio: {
 		id: string;
 		mime_type: string;
 		sha256: string;
@@ -209,7 +209,7 @@ export interface WebhookMessageContact extends WebhookMessageBase {
 	/**
 	 * When the messages type field is set to contacts, this object is included in the messages object:
 	 */
-	contacts?: WebhookContactCard[];
+	contacts: WebhookContactCard[];
 }
 
 export interface WebhookMessageLocation extends WebhookMessageBase {
@@ -221,7 +221,7 @@ export interface WebhookMessageLocation extends WebhookMessageBase {
 	/**
 	 * When the messages type field is set to location, this object is included in the messages object:
 	 */
-	location?: WebhookLocation[];
+	location: WebhookLocation[];
 }
 
 export interface WebhookMessageButton extends WebhookMessageBase {
@@ -233,7 +233,7 @@ export interface WebhookMessageButton extends WebhookMessageBase {
 	/**
 	 * When the messages type field is set to button, this object is included in the messages object:
 	 */
-	button?: {
+	button: {
 		/**
 		 * The payload for a button set up by the business that a customer clicked as part of an interactive message
 		 */
@@ -251,7 +251,7 @@ export interface WebhookMessageDocument extends WebhookMessageBase {
 	/**
 	 * When messages type is set to document.
 	 */
-	document?: WebhookMedia;
+	document: WebhookMedia;
 }
 
 export interface WebhookMessageImage extends WebhookMessageBase {
@@ -263,7 +263,7 @@ export interface WebhookMessageImage extends WebhookMessageBase {
 	/**
 	 * When messages type is set to image, this object is included in the messages object.
 	 * */
-	image?: WebhookMedia;
+	image: WebhookMedia;
 }
 
 export interface WebhookMessageInteractive extends WebhookMessageBase {
@@ -275,7 +275,7 @@ export interface WebhookMessageInteractive extends WebhookMessageBase {
 	/**
 	 * When a customer selected a button or list reply.
 	 */
-	interactive?: {
+	interactive: {
 		type: {
 			/**
 			 * Sent when a customer clicks a button
@@ -311,7 +311,7 @@ export interface WebhookMessageSticker extends WebhookMessageBase {
 	/**
 	 * When messages type is set to sticker.
 	 */
-	sticker?: {
+	sticker: {
 		mime_type: LiteralUnion<"image/webp">;
 		sha256: string;
 		/**
@@ -330,7 +330,7 @@ export interface WebhookMessageText extends WebhookMessageBase {
 	/**
 	 * When messages type is set to text.
 	 */
-	text?: {
+	text: {
 		body: string;
 	};
 }
@@ -344,7 +344,7 @@ export interface WebhookMessageVideo extends WebhookMessageBase {
 	/**
 	 * When messages type is set to video.
 	 */
-	video?: WebhookMedia;
+	video: WebhookMedia;
 }
 
 export interface WebhookMessageReaction extends WebhookMessageBase {
@@ -356,7 +356,7 @@ export interface WebhookMessageReaction extends WebhookMessageBase {
 	/**
 	 * When messages type is set to reaction.
 	 */
-	reaction?: ReactionMessage;
+	reaction: ReactionMessage;
 }
 
 export interface WebhookMessageOrder extends WebhookMessageBase {
@@ -393,7 +393,7 @@ export interface WebhookMessageSystem extends WebhookMessageBase {
 	/**
 	 * When messages type is set to system, a customer has updated their phone number or profile information
 	 */
-	system?: {
+	system: {
 		/**
 		 * Describes the change to the customer's identity or phone number
 		 */
