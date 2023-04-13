@@ -36,7 +36,9 @@ export type MessageType =
 	| "template"
 	| "text"
 	| "video"
-	| "reaction";
+	| "reaction"
+	| "button"
+	| "order";
 
 export type MessageContext = {
 	/**
