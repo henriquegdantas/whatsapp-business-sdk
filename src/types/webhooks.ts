@@ -29,12 +29,12 @@ export type WebhookContactCard = {
 		type: string;
 	}[];
 	addresses?: {
-		street: string;
-		city: string;
-		state: string;
-		zip: string;
-		country: string;
-		type: string;
+		street?: string;
+		city?: string;
+		state?: string;
+		zip?: string;
+		country?: string;
+		type?: string;
 	}[];
 	emails?: {
 		email: string;
