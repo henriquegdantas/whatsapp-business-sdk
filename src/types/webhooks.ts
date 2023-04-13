@@ -1,7 +1,6 @@
 import { WABAErrorCodes } from "./error";
 import { LiteralUnion } from "./utils";
 import { MessageType, ReactionMessage } from "./messages";
-
 /**
  * The information for the customer who sent a message to the business
  */
@@ -15,11 +14,57 @@ export type WebhookContact = {
 	};
 };
 
+/**
+ * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#messages-object
+ */
+export type WebhookContactCard = {
+	name: {
+		first_name: string;
+		last_name: string;
+		formatted_name: string;
+	};
+	phones?: {
+		phone: string;
+		wa_id: string;
+		type: string;
+	}[];
+	addresses?: {
+		street: string;
+		city: string;
+		state: string;
+		zip: string;
+		country: string;
+		type: string;
+	}[];
+	emails?: {
+		email: string;
+		type: string;
+	}[];
+	org?: {
+		company: string;
+	};
+	urls?: {
+		url: string;
+		type: string;
+	}[];
+};
+
+/**
+ * When the user sends a location message
+ * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#messages-object
+ */
+export type WebhookLocation = {
+	address: string;
+	latitude: number;
+	longitude: number;
+	name: string;
+	url: string;
+};
+
 export type WebhookError = {
 	code: WABAErrorCodes;
 	title: string;
 };
-
 export type WebhookMedia = {
 	/**
 	 * Caption for the file, if provided
@@ -36,7 +81,6 @@ export type WebhookMedia = {
 	 */
 	id: string;
 };
-
 /**
  * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#messages-object
  */
@@ -66,6 +110,15 @@ export type WebhookMessage = {
 		payload: any;
 		text: string;
 	};
+	/**
+	 * When the messages type field is set to contacts, this object is included in the messages object:
+	 */
+	contacts?: WebhookContactCard[];
+
+	/**
+	 * When the messages type field is set to location, this object is included in the messages object:
+	 */
+	location?: WebhookLocation[];
 	/**
 	 * When the messages type field is set to button, this object is included in the messages object. The context for a message that was forwarded or in an inbound reply from the customer.
 	 */
@@ -246,7 +299,6 @@ export type WebhookMessage = {
 	 */
 	reaction?: ReactionMessage;
 };
-
 /**
  * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#statuses-object
  */
@@ -323,7 +375,6 @@ export type WebhookStatus = {
 	 */
 	timestamp: number;
 };
-
 export type WebhookChange = {
 	value: {
 		messaging_product: "whatsapp";
@@ -338,7 +389,6 @@ export type WebhookChange = {
 	};
 	field: LiteralUnion<"messages">;
 };
-
 /**
  * Webhooks are triggered when a customer performs an action or the status for a message a business sends a customer changes.
  * To add webhooks go here https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks
@@ -353,7 +403,6 @@ export type Webhook = {
 		}
 	];
 };
-
 export type WebhookEvents = {
 	/**
 	 * Gets fired when the server starts listening
