@@ -74,7 +74,7 @@ export type WebhookMedia = {
 	 * Name for the file on the sender's device
 	 */
 	filename: string;
-	ha256: string;
+	sha256: string;
 	mime_type: string;
 	/**
 	 * ID for the file
