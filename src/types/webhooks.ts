@@ -96,7 +96,7 @@ export type WebhookMessageBase = {
 	/**
 	 * The ID for the message that was received by the business. You could use messages endpoint to mark it as read.
 	 */
-	id: number;
+	id: string;
 
 	/**
 	 * The time when the customer sent the message to the business in unix format
