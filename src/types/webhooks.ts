@@ -64,6 +64,10 @@ export type WebhookLocation = {
 export type WebhookError = {
 	code: WABAErrorCodes;
 	title: string;
+	message?: string;
+	error_data?: {
+		details?: string;
+	};
 };
 export type WebhookMedia = {
 	/**
