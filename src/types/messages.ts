@@ -38,7 +38,8 @@ export type MessageType =
 	| "video"
 	| "reaction"
 	| "button"
-	| "order";
+	| "order"
+	| "unsupported";
 
 export type MessageContext = {
 	/**
