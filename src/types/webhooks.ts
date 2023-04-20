@@ -388,6 +388,13 @@ export interface WebhookMessageUnknown extends WebhookMessageBase {
 	type: "unknown";
 }
 
+export interface WebhookMessageUnsupported extends WebhookMessageBase {
+	/**
+	 * A message of audio type.
+	 */
+	type: "unsupported";
+}
+
 export interface WebhookMessageSystem extends WebhookMessageBase {
 	/**
 	 * A message of audio type.
@@ -451,7 +458,8 @@ export type WebhookMessage =
 	| WebhookMessageReaction
 	| WebhookMessageSystem
 	| WebhookMessageOrder
-	| WebhookMessageUnknown;
+	| WebhookMessageUnknown
+	| WebhookMessageUnsupported;
 /**
  * For more information about this object, go here https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#statuses-object
  */
